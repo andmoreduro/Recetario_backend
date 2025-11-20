@@ -754,6 +754,12 @@ app.get("/api/debug/search", async (req, res) => {
   }
 });
 
+// Catch-all: Para cualquier otra ruta no reconocida por la API, se sirve el index.html.
+// Esto es crucial para que el enrutamiento del lado del cliente (React Router) funcione correctamente.
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
 });
