@@ -245,7 +245,7 @@ app.get("/api/planner/today", async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "No autorizado: El usuario no existe." });
     }
-    
+
     // Normaliza la fecha a la medianoche UTC para garantizar la unicidad por día de calendario,
     // independientemente de la zona horaria del cliente o del servidor.
     const now = new Date();
@@ -325,7 +325,7 @@ app.delete("/api/planner/entries/:id", async (req, res) => {
       where: { id: entryId },
       select: { plan: { select: { userId: true } } },
     });
-    
+
     if (!entry || entry.plan.userId !== userId) {
       return res.status(404).json({ message: "Entrada no encontrada o no pertenece al usuario." });
     }
@@ -517,7 +517,7 @@ app.get("/api/users/me/calorie-history", async (req, res) => {
   if (isNaN(startDate.getTime())) {
     return res.status(400).json({ message: "Formato de fecha u offset inválido." });
   }
-  
+
   // La fecha de fin son 6 días después, terminando al final de ese día.
   const endDate = new Date(startDate);
   endDate.setDate(endDate.getDate() + 6);
@@ -749,12 +749,6 @@ app.get("/api/debug/search", async (req, res) => {
     console.error("Error en el endpoint de depuración de búsqueda:", error);
     res.status(500).json({ message: "Error del servidor durante la depuración." });
   }
-});
-
-// Catch-all: Para cualquier otra ruta no reconocida por la API, se sirve el index.html.
-// Esto es crucial para que el enrutamiento del lado del cliente (React Router) funcione correctamente.
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 app.listen(PORT, () => {

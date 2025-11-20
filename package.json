@@ -11,8 +11,7 @@
     "postinstall": "npm run prisma -- generate",
     "seed": "dotenv -e .env -- node prisma/seed.js",
     "db:reset": "npm run prisma -- migrate reset --force",
-    "db:setup": "npm run prisma -- migrate deploy && npm run seed",
-    "build": "cd .. && npm install && npm run build && rm -rf backend/dist && mv dist backend/dist"
+    "db:setup": "npm run prisma -- migrate deploy && npm run seed"
   },
   "keywords": [],
   "author": "",
