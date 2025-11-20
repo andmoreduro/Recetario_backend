@@ -12,7 +12,7 @@
     "postinstall": "npm run prisma -- generate",
     "seed": "dotenv -e .env -- node prisma/seed.js",
     "db:reset": "npm run prisma -- migrate reset --force",
-    "db:setup": "npm run prisma -- migrate deploy && npm run seed",
+    "db:setup": "npm run prisma -- migrate deploy && npm run seed"
   },
   "keywords": [],
   "author": "",
