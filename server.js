@@ -15,7 +15,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Configuración de Middleware
-app.use(cors());
+const corsOptions = {
+  origin: 'https://recetario-s1gx.onrender.com',
+}
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Middleware para servir los archivos estáticos del frontend desde la carpeta 'dist'
