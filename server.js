@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuración de Middleware
 const corsOptions = {
-  origin: 'https://recetario-s1gx.onrender.com',
+  origin: 'https://recetario-v0sf.onrender.com',
 }
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
@@ -757,5 +757,3 @@ app.get("/api/debug/search", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
 });
-
-// Added comment to deploy well, now, hopefully?
